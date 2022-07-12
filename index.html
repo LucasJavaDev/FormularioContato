@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Entre em contato</title>
+</head>
+<body>
+    <div class="container">
+        <form onsubmit="sendEmail(); reset(); return false;"> 
+            <div class="titulo">
+                <h2>Contato</h2>
+            </div>
+            <div class="formulario-items">
+            <input type="text" name="texto" placeholder="Nome">
+            <input type="email" id="email" name="email" placeholder="Email">
+            <input type="tel" name="numero" placeholder="(DDD) 00000-0000">
+            <textarea name="messagem" id="mensagem"  rows="4" placeholder="Digite sua messagem aqui"></textarea>
+            <button class="botao">Enviar</button>
+            </div>
+        </form>       
+    </div>
+
+
+
+
+
+
+
+
+<script src="scripts.js"></script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+    function sendEmail(){
+        Email.send({
+    Host : "smtp.yourisp.com",
+    Username : "username",
+    Password : "password",
+    To : 'them@website.com',
+    From : document.getElementById('email'),
+    Subject : "Novo Contato",
+    Body : "And this is the body"
+    }).then(
+    message => alert(message)
+    );
+    }
+</script>
+</body>
+</html>
